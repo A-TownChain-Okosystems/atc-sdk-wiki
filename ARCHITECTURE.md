@@ -1,37 +1,38 @@
-# 🌳 Architektur — atc-sdk-wiki
+# ARCHITECTURE.md — atc-sdk
+> Copyright © Michael Wroblewski / A-TownChain-Okosystems. All Rights Reserved.
 
-> **Stand:** 2026-08-06 | **Commit:** 5bf1374
-> **Teil von:** [A-TownChain Ökosystem](https://github.com/A-TownChain-Okosystems)
-
-## Statistik
-
-| Metrik | Wert |
-|--------|------|
-| Dateien | 12 |
-| Zeilen | 193 |
-| .atc | 0 |
-| .py | 0 |
-| .rs | 0 |
-| .ts/.tsx | 0 |
-| .md | 10 |
-
-## Verzeichnisstruktur
-
-```
-├── docs/ (4 files, 86 lines)
-│   ├── API.md (14 lines)
-│   ├── ARCHITECTURE.md (35 lines)
-│   ├── MODULES.md (14 lines)
-│   └── ROADMAP.md (23 lines)
+## File Tree
+```tree
 ├── .gitignore
-├── ARCHITECTURE.md (14 lines)
-├── FILE_REGISTER.md (16 lines)
+├── CHANGELOG.md
+├── COMPONENT_PLAN.md
+├── FILE_REGISTER.md
 ├── LICENSE
-├── MODULES.md (10 lines)
-├── README.md (24 lines)
-├── ROADMAP.md (8 lines)
-└── STATUS.md (35 lines)
+├── README.md
+├── ROADMAP.md
+├── STATUS.md
+├── api_client.atc
+├── client.atc
+├── contract_bindings.atc
+├── event_subscriber.atc
+├── rust/
+│   ├── Cargo.toml
+│   └── src/
+│       └── lib.rs
+├── types.atc
+├── typescript/
+│   ├── package.json
+│   └── src/
+└── utils.atc
 ```
 
----
-*Auto-generiert 2026-08-06 · Aurora (MasterBrain · Base44)*
+## Module Descriptions
+- **rust/src/lib.rs** & **rust/Cargo.toml**: Native Rust SDK library crate providing RPC client abstractions, binary transaction builders, and cryptographic key management.
+- **typescript/src/** & **typescript/package.json**: TypeScript SDK package offering Web3 providers, contract interaction bindings, and event streaming utilities.
+- Common SDK abstractions: RPC node client handlers, contract ABI binding generators, event subscriber sockets, and type definitions.
+
+## Build System
+Dual build system: Cargo for Rust crate (`cargo build --release`) and npm / `tsc` for TypeScript library publishing (`npm run build`).
+
+## Dependencies
+Rust (`tokio`, `serde`, `reqwest`, `ethers-core`), TypeScript (`axios`, `ethers`, `@types/node`).
